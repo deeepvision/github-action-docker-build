@@ -8,7 +8,7 @@ function main() {
   DOCKER_REGISTRY=docker.pkg.github.com
   translateDockerTag
 
-  echo ${INPUT_PASSWORD} | docker login -u ${INPUT_USERNAME} --password-stdin ${DOCKER_REGISTRY}
+  echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin ${DOCKER_REGISTRY}
 
   DOCKER_IMAGE_NAME=${DOCKER_REGISTRY}/${GITHUB_REPOSITORY}/${INPUT_NAME}:${IMAGE_TAG}
 
