@@ -19,7 +19,7 @@ function main() {
   DIGEST=$(docker inspect --format='{{index .RepoDigests 0}}' ${DOCKER_IMAGE_NAME})
   echo "::set-output name=digest::${DIGEST}"
 
-  docker logout
+  docker logout ${DOCKER_REGISTRY}
 }
 
 function translateDockerTag() {
