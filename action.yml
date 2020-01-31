@@ -1,9 +1,6 @@
 name: 'Docker::Build'
 description: 'Build and push Docker image for Github Docker Registry'
 inputs:
-  repo:
-    description: 'The name of the repo'
-    required: true
   name:
     description: 'The name of the image'
     required: true

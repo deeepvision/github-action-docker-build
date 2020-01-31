@@ -10,7 +10,7 @@ function main() {
 
   echo ${INPUT_PASSWORD} | docker login -u ${INPUT_USERNAME} --password-stdin ${DOCKER_REGISTRY}
 
-  DOCKER_IMAGE_NAME=${DOCKER_REGISTRY}/${INPUT_REPO}/${INPUT_NAME}:${IMAGE_TAG}
+  DOCKER_IMAGE_NAME=${DOCKER_REGISTRY}/${GITHUB_REPOSITORY}/${INPUT_NAME}:${IMAGE_TAG}
 
   docker build -t ${DOCKER_IMAGE_NAME} .
   docker push ${DOCKER_IMAGE_NAME}
