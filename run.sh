@@ -26,6 +26,8 @@ function translateDockerTag() {
   local BRANCH=$(echo ${GITHUB_REF} | sed -e "s/refs\/heads\///g" | sed -e "s/\//-/g")
   if isOnMaster; then
     IMAGE_TAG="latest"
+  elif isOnReleaseBranch; then
+    IMAGE_TAG=$(echo ${BRANCH} | sed -e "s/refs\/heads\/release\///g")
   elif isGitTag; then
     IMAGE_TAG=$(echo ${GITHUB_REF} | sed -e "s/refs\/tags\/v\([[:digit:]]*.[[:digit:]]*\).[[:digit:]]*/\1/g")
   else
@@ -35,6 +37,10 @@ function translateDockerTag() {
 
 function isOnMaster() {
   [ "${BRANCH}" = "master" ]
+}
+
+function isOnReleaseBranch() {
+  [ $(echo "${BRANCH}" | sed -e "s/refs\/heads\/release\///g") != "${BRANCH}" ]
 }
 
 function isGitTag() {
