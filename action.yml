@@ -13,6 +13,11 @@ inputs:
   password:
     description: 'The login password for the registry'
     required: true
+outputs:
+  tag:
+    description: 'Is the tag, which was pushed'
+  digest:
+    description: 'Is the digest of the image, which was pushed'
 runs:
   using: 'docker'
   image: 'Dockerfile'
