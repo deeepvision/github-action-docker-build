@@ -35,7 +35,7 @@ function translateDockerTag() {
 }
 
 function isOnMaster() {
-  [ "${BRANCH}" = "master" ]
+  [ "${GITHUB_REF}" = "refs/heads/master" ]
 }
 
 function isOnReleaseBranch() {
