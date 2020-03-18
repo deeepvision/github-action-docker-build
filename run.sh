@@ -12,7 +12,7 @@ function main() {
 
   DOCKER_IMAGE_NAME=${DOCKER_REGISTRY}/${GITHUB_REPOSITORY}/${INPUT_NAME}:${IMAGE_TAG}
 
-  docker build -t ${DOCKER_IMAGE_NAME} .
+  docker build --build-arg GITHUB_TOKEN -t ${DOCKER_IMAGE_NAME} .
   docker push ${DOCKER_IMAGE_NAME}
 
   echo "::set-output name=tag::${IMAGE_TAG}"
